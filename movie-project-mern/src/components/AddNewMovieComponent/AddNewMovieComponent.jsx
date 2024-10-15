@@ -203,6 +203,9 @@ const AddNewMovieComponent = () => {
         />
       </div>
 
+      <div>
+        <button type='submit'>Add</button>
+      </div>
     </form>
   );
 };
