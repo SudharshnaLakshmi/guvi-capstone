@@ -29,3 +29,6 @@ jobs:
 
       - name: Push Docker image
         run: docker push srimathi2004/movie-frontend:latest
+
+      - name: Push Docker image
+        run: docker push srimathi2004/movie-backend:latest
