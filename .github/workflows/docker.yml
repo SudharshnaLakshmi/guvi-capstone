@@ -19,7 +19,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t srimathi2004/movie-frontend:latest ./movie-project-mern  # Adjust the path to the Dockerfile
+        run: docker build -t srimathi2004/movie-frontend:latest ./movie-project-mern
+
+      - name: Build Docker image
+        run: docker build -t srimathi2004/movie-frontend:latest ./movie-mern-project-backend  
 
       - name: List Docker images
         run: docker images
