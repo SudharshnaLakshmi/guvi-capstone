@@ -1,14 +1,13 @@
-FROM node:20-alpine
+# Stage 1: Build the application
+FROM node:20-alpine AS build
 
-# Update certificates
-RUN apk add --no-cache ca-certificates
-
-WORKDIR /app
+# Set the working directory
+WORKDIR ./
 
 # Copy package files
 COPY package*.json ./
 
-# Install all dependencies (including development)
+# Install dependencies
 RUN npm install
 
 # Copy application files
@@ -17,11 +16,14 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Install serve globally
-RUN npm install -g serve
+# Stage 2: Serve the application with Nginx
+FROM nginx:alpine
+
+# Copy the build output to the Nginx HTML directory
+COPY --from=build ./build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
-# Start the application
-CMD ["serve", "-s", "build", "-l", "80"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
