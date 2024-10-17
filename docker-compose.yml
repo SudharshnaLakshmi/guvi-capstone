@@ -45,10 +45,6 @@ services:
       MONGODB_URI: mongodb://root:root@db:27017/mydb  # Ensure the correct connection string is here
 
   db:
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: mydb
+    build: ./db
     ports:
       - "27017:27017"
