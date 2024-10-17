@@ -7,6 +7,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const PORT = 3500
 
+console.log('Database URL:', process.env.DB_URL); 
+
 mongoose.connect(process.env.DB_URL);
 const db = mongoose.connection
 db.on('error', (errorMessage)=>{console.log(errorMessage)})
