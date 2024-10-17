@@ -76,7 +76,7 @@ const AddNewMovieComponent = () => {
     event.preventDefault();
 
     axios
-        .post(`http://localhost:3500/api/v1/movie/addMovie`, movieInfo)
+        .post(`http://16.171.170.34:3500/api/v1/movie/addMovie`, movieInfo)
         .then((response) => {
             console.log(response.data)
             alert(`${response.data.movieName} is added successfully.`)

@@ -58,7 +58,7 @@ const MovieSuggestionComponent = () => {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3500/api/v1/movie/suggest`, movieCriteria)
+      .post(`http://16.171.170.34:3500/api/v1/movie/suggest`, movieCriteria)
       .then(response => setSuggestedMovies(response.data))
       .catch((error) => {
         if(error.response)
