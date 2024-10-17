@@ -18,9 +18,13 @@ jobs:
         run: docker build -t sudharshna/movie-frontend:latest ./movie-project-mern # Update path if needed
       - name: Build backend image
         run: docker build -t sudharshna/movie-backend:latest ./movie-mern-project-backend
+      - name: Build db image
+        run: docker build -t sudharshna/db:latest ./db
       - name: List Docker images
         run: docker images
       - name: Push frontend image
         run: docker push sudharshna/movie-frontend:latest
       - name: Push backend image
         run: docker push sudharshna/movie-backend:latest
+      - name: Push db image
+        run: docker push sudharshna/db:latest
