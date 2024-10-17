@@ -10,20 +10,14 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Install serve
+RUN npm install -g serve
+
 # Copy application files
 COPY . .
 
 # Build the application
 RUN npm run build
 
-# Stage 2: Serve the application with Nginx
-FROM nginx:alpine
-
-# Copy the build output to the Nginx HTML directory
-COPY --from=build ./build /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+#Run the Index.html
+CMD ["serve", "-s", "build", "-l", "80"]
