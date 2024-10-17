@@ -20,5 +20,5 @@ app.use(cors())
 app.use('/api/v1/movie', movieRouter);
 
 app.listen(PORT, ()=>{
-    console.log(`Server Running on http://localhost:${PORT}/api/v1/movie/`);
+    console.log(`Server Running on http://16.171.170.34/:${PORT}/api/v1/movie/`);
 })
