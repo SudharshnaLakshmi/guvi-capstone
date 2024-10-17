@@ -1,3 +1,33 @@
+# version: '3.8'
+# services:
+#   frontend:
+#     build: ./movie-project-mern
+#     ports:
+#       - "80:80"
+
+#   backend:
+#     build: ./movie-mern-project-backend
+#     ports:
+#       - "3500:3500"
+#     depends_on:
+#       - db
+
+#   # db:
+#   #   image: postgres:latest
+#   #   environment:
+#   #     POSTGRES_USER: root
+#   #     POSTGRES_PASSWORD: root
+#   #     POSTGRES_DB: mydb
+#   #   ports:
+#   #     - "27017:27017"
+#   db:
+#     image: mongo:latest   # Use MongoDB image
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root    # Set MongoDB root username
+#       MONGO_INITDB_ROOT_PASSWORD: root    # Set MongoDB root password
+#       MONGO_INITDB_DATABASE: mydb          # Default database
+#     ports:
+#       - "27017:27017"
 version: '3.8'
 services:
   frontend:
@@ -11,20 +41,14 @@ services:
       - "3500:3500"
     depends_on:
       - db
-
-  # db:
-  #   image: postgres:latest
-  #   environment:
-  #     POSTGRES_USER: root
-  #     POSTGRES_PASSWORD: root
-  #     POSTGRES_DB: mydb
-  #   ports:
-  #     - "27017:27017"
-  db:
-    image: mongo:latest   # Use MongoDB image
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root    # Set MongoDB root username
-      MONGO_INITDB_ROOT_PASSWORD: root    # Set MongoDB root password
-      MONGO_INITDB_DATABASE: mydb          # Default database
+      MONGODB_URI: mongodb://root:root@db:27017/mydb  # Ensure the correct connection string is here
+
+  db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: mydb
     ports:
       - "27017:27017"
