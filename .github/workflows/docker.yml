@@ -1,41 +1,26 @@
 name: CI Pipeline
-
 on:
   push:
     branches:
-      - main  
-
+      - main
 jobs:
   build:
-    runs-on: ubuntu-latest  
-
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Build frontend image
-        run: docker build -t sudharshna/guvi-capstone-frontend:latest ./movie-project-mern # Update path if needed
-
+        run: docker build -t sudharshna/movie-frontend:latest ./movie-project-mern # Update path if needed
       - name: Build backend image
-        run: docker build -t sudharshna/guvi-capstone-backend:latest ./movie-mern-project-backend
-
-      - name: Build database image
-        run: docker build -t sudharshna/guvi-capstone-db:latest ./path-to-your-database-dockerfile # Update the path to your database Dockerfile
-
+        run: docker build -t sudharshna/movie-backend:latest ./movie-mern-project-backend
       - name: List Docker images
         run: docker images
-
       - name: Push frontend image
-        run: docker push sudharshna/guvi-capstone-frontend:latest
-
+        run: docker push sudharshna/movie-frontend:latest
       - name: Push backend image
-        run: docker push sudharshna/guvi-capstone-backend:latest
-
-      - name: Push database image
-        run: docker push sudharshna/guvi-capstone-db:latest
+        run: docker push sudharshna/movie-backend:latest
