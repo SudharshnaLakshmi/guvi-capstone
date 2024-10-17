@@ -21,18 +21,18 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build frontend image
-        run: docker build -t srimathi2004/movie-frontend:latest ./movie-project-mern # Update path if needed
+        run: docker build -t sudharshna/movie-frontend:latest ./movie-project-mern # Update path if needed
 
   
       - name: Build backend image
-        run: docker build -t srimathi2004/movie-backend:latest ./movie-mern-project-backend
+        run: docker build -t sudharshna/movie-backend:latest ./movie-mern-project-backend
 
     
       - name: List Docker images
         run: docker images
 
       - name: Push frontend image
-        run: docker push srimathi2004/movie-frontend:latest
+        run: docker push sudharshna/movie-frontend:latest
 
       - name: Push backend image
-        run: docker push srimathi2004/movie-backend:latest
+        run: docker push sudharshna/movie-backend:latest
