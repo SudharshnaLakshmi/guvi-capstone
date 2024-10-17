@@ -3,7 +3,7 @@ services:
   frontend:
     build: ./movie-project-mern
     ports:
-      - "3000:3000"
+      - "80:80"
 
   backend:
     build: ./movie-mern-project-backend
@@ -12,11 +12,19 @@ services:
     depends_on:
       - db
 
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_USER: root
+  #     POSTGRES_PASSWORD: root
+  #     POSTGRES_DB: mydb
+  #   ports:
+  #     - "27017:27017"
   db:
-    image: postgres:latest
+    image: mongo:latest   # Use MongoDB image
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: mydb
+      MONGO_INITDB_ROOT_USERNAME: root    # Set MongoDB root username
+      MONGO_INITDB_ROOT_PASSWORD: root    # Set MongoDB root password
+      MONGO_INITDB_DATABASE: mydb          # Default database
     ports:
       - "27017:27017"
