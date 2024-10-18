@@ -22,3 +22,5 @@ app.use('/api/v1/movie', movieRouter);
 app.listen(PORT, ()=>{
     console.log(`Server Running on http://localhost:${PORT}/api/v1/movie/`);
 })
+
+module.exports = app;

@@ -18,6 +18,9 @@ jobs:
         run: docker build -t sudharshna/movie-frontend:latest ./movie-project-mern # Update path if needed
       - name: Build backend image
         run: docker build -t sudharshna/movie-backend:latest ./movie-mern-project-backend
+      - name: Run backend tests
+        run: |
+          docker run --rm sudharshna/movie-backend:latest npm test
       - name: Build db image
         run: docker build -t sudharshna/db:latest ./db
       - name: List Docker images

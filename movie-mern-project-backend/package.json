@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Running backend tests\" && exit 0"
+    "test": "jest --forceExit --passWithNoTests"
+    
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,13 @@
     "express": "^4.21.1",
     "mongoose": "^8.7.1",
     "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  
+  "jest": {
+    "testMatch": ["**/?(*.)+(test).[jt]s?(x)"]
   }
 }
