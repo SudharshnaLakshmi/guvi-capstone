@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Router>
             <div className="container">
-              <h1>Movie Suggestion App</h1>
+              <h1>Movie Suggestion </h1>
               
             <nav className="nav-menu">
                 <Link to="/" >Home</Link>
